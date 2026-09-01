@@ -1,7 +1,6 @@
 {
   "name": "bt-bd-subgroup-5b",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "node --watch index.js",
@@ -10,5 +9,17 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cephas001/bt-bd-subgroup-5b.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cephas001/bt-bd-subgroup-5b/issues"
+  },
+  "homepage": "https://github.com/cephas001/bt-bd-subgroup-5b#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
