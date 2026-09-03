@@ -99,6 +99,36 @@ app.delete("/products/:id", async (req, res) => {
   }
 });
 
+// PUT update product by id
+app.put("/products/:id", async (req, res) => {
+  const { id } = req.params;
+  const updates = req.body;
+
+  try {
+    const products = await getProducts();
+    const index = products.findIndex((p) => p.id === id);
+
+    if (index === -1) {
+      return res
+        .status(404)
+        .json({ error: true, message: "Product not found" });
+    }
+
+    // Update the product while ensuring the original ID cannot be overwritten
+    products[index] = {
+      ...products[index],
+      ...updates,
+      id: products[index].id,
+    };
+
+    await saveProducts(products);
+    res.json({ status: "success", product: products[index] });
+  } catch (err) {
+    console.error(`PUT /products/${id} error:`, err.message);
+    res.status(500).json({ error: true, message: "Failed to update product" });
+  }
+});
+
 app.listen(PORT, () =>
   console.log(`Server running on http://localhost:${PORT}`),
 );
